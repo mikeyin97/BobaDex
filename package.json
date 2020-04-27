@@ -4,7 +4,10 @@
   "description": "Share and view reviews for your favourite drinks.",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"yarn run start-watch\" \"cd client && yarn start\"",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build", 
+    "start": "node index.js",
     "start-watch": "nodemon index.js",
     "dev": "concurrently \"yarn run start-watch\" \"cd client && yarn start\""
   },
