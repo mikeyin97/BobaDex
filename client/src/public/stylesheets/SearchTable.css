@@ -1,0 +1,173 @@
+.container{
+  width: 50%;
+  margin: 0 auto;
+}
+
+form.searchClass input[type=text]{
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  background: #f1f1f1;
+  display: inline-block;
+  width: 85%;
+}
+
+form.searchClass button {
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; 
+  cursor: pointer;
+  width: 10%;
+}
+
+form.searchClass button:hover {
+  background: #0b7dda;
+  cursor: pointer;
+}
+
+.addButton {
+  background-color: 	 #3939ac;
+  border: 1px solid grey;
+  color: white;
+  padding: 0px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  height: 42px;
+  width: 100%;
+}
+
+.addButton:hover {
+  background-color: #2d2d86;
+  cursor: pointer;
+}
+
+.or{
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+}
+
+.add{
+  display: inline-block;
+  width: 20%;
+  font-size: 50%;
+}
+
+.whitespace3{
+  width: 100%;
+  margin-top: -5px;
+}
+
+.text{
+  color: #999;
+  text-decoration: underline;
+}
+
+.text:hover{
+  color: #444;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.search{
+  display: inline-block;
+  width: 70%;
+}
+
+table{
+  width: 100%;
+  table-layout: fixed;
+}
+
+thead{
+  background-color: #6F3EAB;
+  color: #f1f1f1;
+  line-height: 110%;
+}
+
+td{
+  background-color: #f1f1f1;
+}
+#sortDir{
+  font-size: 50%;
+}
+
+@media only screen and (max-width: 600px){
+  .container{
+    width: 100%;
+    margin-left: 80px;
+  }
+
+  form.searchClass input[type=text]{
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 70%;
+    background: #f1f1f1;
+  }
+
+  form.searchClass button {
+    float: left;
+    width: 50px;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; 
+    cursor: pointer;
+  }
+  
+  .or{
+    display: inline-block;
+    width: 80%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .add{
+    display: inline-block;
+    width: 80%;
+    font-size: 50%;
+  }
+  
+  .search{
+    display: inline-block;
+    width: 100%;
+  }
+
+  .addButton {
+    background-color: #3939ac;
+    border: 1px solid grey;
+    color: white;
+    padding: 0px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    height: 42px;
+    width: 40%;
+    margin-left: 30%;
+    margin-bottom: 20px;
+  }
+
+  .addButton:hover {
+    background-color: #2d2d86;
+    cursor: pointer;
+  }
+
+  .whitespace3{
+    width: 100%;
+    margin-top: -50px;
+  }
+  
+  table{
+    width: 80%;
+    table-layout: fixed;
+  }
+  
+}

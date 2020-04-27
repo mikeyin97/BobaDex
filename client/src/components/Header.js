@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import '../public/stylesheets/Header.css';
+import header from '../public/images/header.png'
 
 class Header extends Component {
-  state = {
-
-  }
-
-  addTodo = () => {
-  }
-
-  handleChange = (e) => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    };
   }
 
   render() {
     return (
-      <div>
-        hi
+      <div id = "header">
+        <div id = "whitespace1"></div>
+        <div id = "image">
+          <img src={header}>
+          </img>
+        </div>
+        <div id = "whitespace2"></div>
       </div>
+      
     )
   }
 }
