@@ -100,7 +100,7 @@ td{
 .ReactModal__Content{
   width: 50%;
   margin: 0 auto;
-  height: 60%;
+  height: 70%;
 }
 
 #modaltitle{
@@ -138,13 +138,13 @@ form.input input[type=text]{
 }
 
 .submitButton {
-  margin-top: 30px;
+  clear: both;
+  margin-top: 60px;
   background-color: #3939ac;
   border: 1px solid grey;
   color: white;
   padding: 0px 10px;
   text-align: center;
-  display: inline-block;
   font-size: 16px;
   height: 42px;
   width: 40%;
@@ -152,14 +152,44 @@ form.input input[type=text]{
   margin-bottom: 20px;
 }
 
+.submitButton2 {
+  clear: both;
+  margin-top: 10px;
+  background-color: #3939ac;
+  border: 1px solid grey;
+  color: white;
+  padding: 0px 10px;
+  text-align: center;
+  font-size: 12px;
+  height: 30px;
+  width: 20%;
+  margin-bottom: 10px;
+}
+
+.whitespace4{
+  margin-top: 20px;
+}
+
+.formfield2{
+  margin-top: 5px;
+}
 
 .submitButton:hover {
   background-color: #2d2d86;
   cursor: pointer;
 }
 
+.submitButton2:hover {
+  background-color: #2d2d86;
+  cursor: pointer;
+}
+
+
 
 @media only screen and (max-width: 600px){
+  .advanced{
+    margin-top: -50px;
+  }
   .container{
     width: 100%;
     margin-left: 80px;

@@ -18,17 +18,27 @@ class Header extends Component {
       location: "", 
       price: "", 
       rating: "",
+      advancedSearch: false,
+      filterName: "",
+      filterLocation: "",
+      filterStore: "",
+      minPrice: null,
+      maxPrice: null,
+      minRating: null,
+      maxRating: null,
     };
   }
 
   componentDidMount = () => {
     let url = '/api/quicksearch?query='
+    let data;
     axios.get(url)
       .then(res => {
-        console.log(res.data);
         if(res.data){
+          data = res.data;
+          data.reverse()
           this.setState({
-            data: res.data
+            data: data
           })
         }
       })
@@ -37,15 +47,17 @@ class Header extends Component {
 
   quicksearchData = (e) => {
     e.preventDefault();
+    let data;
     console.log(this.state.value);
     if (this.state.value !== ""){
       let url = '/api/quicksearch?query=' + this.state.value.replace(' ', '+')
       axios.get(url)
         .then(res => {
-          console.log(res.data);
           if(res.data){
+            data = res.data;
+            data.reverse()
             this.setState({
-              data: res.data
+              data: data
             })
           }
         })
@@ -54,10 +66,11 @@ class Header extends Component {
       let url = '/api/quicksearch?query='
       axios.get(url)
         .then(res => {
-          console.log(res.data);
           if(res.data){
+            data = res.data;
+            data.reverse()
             this.setState({
-              data: res.data
+              data: data
             })
           }
         })
@@ -78,9 +91,21 @@ class Header extends Component {
     });
   }
 
+  handleFilterName = (e) => {
+    this.setState({
+      filterName: e.target.value
+    });
+  }
+
   handleChangeStore = (e) => {
     this.setState({
       store: e.target.value
+    });
+  }
+
+  handleFilterStore = (e) => {
+    this.setState({
+      filterStore: e.target.value
     });
   }
 
@@ -90,15 +115,45 @@ class Header extends Component {
     });
   }
 
+  handleFilterLocation = (e) => {
+    this.setState({
+      filterLocation: e.target.value
+    });
+  }
+
   handleChangePrice = (e) => {
     this.setState({
       price: e.target.value
+    });
+  }
+  
+  handleMaxPrice = (e) => {
+    this.setState({
+      maxPrice: e.target.value
+    });
+  }
+
+  handleMinPrice= (e) => {
+    this.setState({
+      minPrice: e.target.value
     });
   }
 
   handleChangeRating = (e) => {
     this.setState({
       rating: e.target.value
+    });
+  }
+
+  handleMaxRating = (e) => {
+    this.setState({
+      maxRating: e.target.value
+    });
+  }
+
+  handleMinRating = (e) => {
+    this.setState({
+      minRating: e.target.value
     });
   }
 
@@ -114,8 +169,59 @@ class Header extends Component {
     });
   }
 
-  submitForm = (e) => {
+  applyFilter = (e) => {
     e.preventDefault();
+    let data;
+    
+    let input = "";
+    if (this.state.filterName !== ""){
+      input = input + "name=" + this.state.filterName + "&"
+    }
+    if (this.state.filterStore !== ""){
+      input = input + "store=" + this.state.filterStore + "&"
+    }
+    if (this.state.filterLocation !== ""){
+      input = input + "location=" + this.state.filterLocation + "&"
+    }
+    if (this.state.maxPrice !== null){
+      input = input + "maxPrice=" + this.state.maxPrice + "&"
+    }
+    if (this.state.minPrice !== null){
+      input = input + "minPrice=" + this.state.minPrice + "&"
+    }
+    if (this.state.maxRating !== null){
+      input = input + "maxRating=" + this.state.maxRating + "&"
+    }
+    if (this.state.minRating !== null){
+      input = input + "minRating=" + this.state.minRating + "&"
+    }
+
+    if (input !== ""){
+      input = input.substring(0, input.length - 1);
+    }
+
+    axios.get('/api/search?' + input)
+        .then(res => {
+          if(res.data){
+            data = res.data;
+            data.reverse()
+            this.setState({
+              data: data
+            })
+          }
+        })
+        .catch(err => console.log(err))
+  }
+
+  openAdvancedSearch = () =>{
+    this.setState({
+      advancedSearch: !this.state.advancedSearch
+    })
+  }
+
+  submitForm = (e) => {
+    e.preventDefault()
+    
     this.setState({
       show: false
     });
@@ -145,10 +251,13 @@ class Header extends Component {
           }
         })
         .catch(err => console.log(err))
+    
+    window.location.reload();
   }
 
   render() {
     let modal = null;
+    let advancedSearch = null;
 
     if (this.state.show === true) {
       modal = 
@@ -157,15 +266,15 @@ class Header extends Component {
            contentLabel="Minimal Modal Example"
         >
           <div id = "modaltitle"><h2>Submit a Review</h2></div>
-          <div id = "modalclose"><button class = "modalclosebutton" onClick={this.handleClose}>
-            <i class="fa fa-times"></i></button>
+          <div id = "modalclose"><button className = "modalclosebutton" onClick={this.handleClose}>
+            <i className="fa fa-times"></i></button>
           </div>
           <form className = "input">
             <div className = "formfield">
-              Name of Drink : &nbsp;&nbsp;&nbsp;<input type="text" onChange={this.handleChangeName}></input>
+              Name of Drink* : &nbsp;&nbsp;&nbsp;<input type="text" onChange={this.handleChangeName}></input>
             </div>
             <div className = "formfield">
-              Store : &nbsp;&nbsp;&nbsp;<input type="text" onChange={this.handleChangeStore}></input>
+              Store* : &nbsp;&nbsp;&nbsp;<input type="text" onChange={this.handleChangeStore}></input>
             </div>
             <div className = "formfield">
               Location : &nbsp;&nbsp;&nbsp;<input type="text" onChange={this.handleChangeLocation}></input>
@@ -174,11 +283,45 @@ class Header extends Component {
               Pre-Tax Price : &nbsp;&nbsp;&nbsp;<input type="text" onChange={this.handleChangePrice}></input>
             </div>
             <div className = "formfield">
-              Rating : &nbsp;&nbsp;&nbsp;<input type="text" onChange={this.handleChangeRating}></input>
+              Rating* : &nbsp;&nbsp;&nbsp;<input type="text" onChange={this.handleChangeRating}></input>
             </div>
+            <div className = "whitespace4">
+              * = required
+            </div>
+           
             <button className = "submitButton" type="submit" onClick={this.submitForm}>Submit Review</button>
           </form>
         </Modal>
+    }
+
+    if (this.state.advancedSearch === true) {
+      advancedSearch =
+        <div className = "advanced">
+          <div className = "add">
+            </div>
+          <div className = "or">
+            </div> 
+          <div className = "search" id="advancedsearch">
+            <div className = "formfield2">
+              <b>Name of Drink</b> contains &nbsp;<input type="text" onChange={this.handleFilterName}></input>
+            </div>
+            <div className = "formfield2">
+              <b>Store</b> contains &nbsp;<input type="text" onChange={this.handleFilterStore}></input>
+            </div>
+            <div className = "formfield2">
+              <b>Location</b> contains &nbsp;<input type="text" onChange={this.handleFilterLocation}></input>
+            </div>
+            <div className = "formfield2">
+              <b>Price</b> is above &nbsp;<input type="text" onChange={this.handleMinPrice}></input> 
+              and below &nbsp;<input type="text" onChange={this.handleMaxPrice}></input>
+            </div>
+            <div className = "formfield2">
+              <b>Rating</b> is above &nbsp;<input type="text" onChange={this.handleMinRating}></input >
+              and below &nbsp;<input type="text" onChange={this.handleMaxRating}></input>
+            </div>
+            <button className = "submitButton2" type="submit" onClick={this.applyFilter}>Apply Filter</button>
+          </div>
+        </div>
     }
 
     return (
@@ -209,8 +352,9 @@ class Header extends Component {
         </div>
 
         <div className = "search">
-          <p><span className = "text">Advanced Search</span></p>
+          <p><span className = "text" onClick = {this.openAdvancedSearch}>Advanced Search</span></p>
         </div>
+        {advancedSearch}
         
         <div className="test">
           <Table data={this.state.data} />
