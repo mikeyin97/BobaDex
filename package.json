@@ -4,7 +4,7 @@
   "description": "Share and view reviews for your favourite drinks.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "concurrently \"yarn run start-watch\" \"cd client && yarn start\"",
     "start-watch": "nodemon index.js",
     "dev": "concurrently \"yarn run start-watch\" \"cd client && yarn start\""
   },
