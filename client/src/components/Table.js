@@ -158,7 +158,7 @@ function DrinkTable(props) {
         accessor: 'location',
       },
       {
-        Header: 'Price',
+        Header: 'Price (Pre-Tax)',
         accessor: 'price',
       },
       {

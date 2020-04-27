@@ -7,7 +7,7 @@ import './public/stylesheets/App.css';
 
 const App = () => {
   return (
-    <div className = "App">
+    <div id="main" className = "App">
       <div className="Header">
         <Header />
       </div>

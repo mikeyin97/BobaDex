@@ -92,9 +92,72 @@ thead{
 td{
   background-color: #f1f1f1;
 }
+
 #sortDir{
   font-size: 50%;
 }
+
+.ReactModal__Content{
+  width: 50%;
+  margin: 0 auto;
+  height: 60%;
+}
+
+#modaltitle{
+  float: left;
+  width: 90%;
+}
+
+#modalclose{
+  float: right;
+  width: 10%;
+  margin-top:20px;
+}
+
+.modalclosebutton:hover{
+  cursor:pointer;
+}
+
+.formfield{
+  clear: both;
+  margin-top: 20px;
+}
+
+h2{
+  margin-bottom: 50px;
+}
+
+form.input input[type=text]{
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid grey;
+  background: #f1f1f1;
+  display: inline-block;
+  font-size: 15px;
+  width: 95%;
+}
+
+.submitButton {
+  margin-top: 30px;
+  background-color: #3939ac;
+  border: 1px solid grey;
+  color: white;
+  padding: 0px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  height: 42px;
+  width: 40%;
+  margin-left: 30%;
+  margin-bottom: 20px;
+}
+
+
+.submitButton:hover {
+  background-color: #2d2d86;
+  cursor: pointer;
+}
+
 
 @media only screen and (max-width: 600px){
   .container{
@@ -165,9 +228,15 @@ td{
     margin-top: -50px;
   }
   
+
   table{
     width: 80%;
     table-layout: fixed;
+  }
+
+  .ReactModal__Content{
+    width: 80%;
+    margin: 0 auto;
   }
   
 }
