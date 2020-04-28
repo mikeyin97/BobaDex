@@ -9,6 +9,17 @@ body {
   min-width: fit-content;
 }
 
+
+@media only screen and (max-width: 600px){
+  #root{
+    width: 100vw;
+  }
+  #main{
+    margin-left:0px;
+  }
+}
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
