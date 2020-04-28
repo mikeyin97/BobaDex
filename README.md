@@ -5,6 +5,5 @@
 A site for people to share and search reviews and comments for their favourite drinks (https://bobadex.herokuapp.com/)
 
 ### To-Do List
-1) Deploy this (keeps failing for some reason)
-2) Image Uploading
-3) Commenting System
+1) Image Uploading
+2) Commenting System
