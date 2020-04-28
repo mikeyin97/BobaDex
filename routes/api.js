@@ -33,8 +33,6 @@ router.get('/quicksearch', (req, res, next) => {
   keywords = req.query.query.replace(' ', "|");
   keywordsQuery = ".*" + keywords + ".*";
 
-  console.log(keywordsQuery)
-
   query = {$or:
     [
       {name: {$regex : keywordsQuery}},
@@ -43,7 +41,6 @@ router.get('/quicksearch', (req, res, next) => {
     ]
   };
   
-  console.log(query);
   Drink.find(query)
   .then(data => res.json(data))
   .catch(next)
@@ -101,7 +98,6 @@ router.get('/search', (req, res, next) => {
     query["rating"]["$gte"] = req.query.minRating;
   }
 
-  console.log(query)
 
   Drink.find(query)
     .then(data => res.json(data))

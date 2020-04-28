@@ -48,7 +48,6 @@ class Header extends Component {
   quicksearchData = (e) => {
     e.preventDefault();
     let data;
-    console.log(this.state.value);
     if (this.state.value !== ""){
       let url = '/api/quicksearch?query=' + this.state.value.replace(' ', '+')
       axios.get(url)
