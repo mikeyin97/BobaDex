@@ -2,7 +2,7 @@
 
 <img src="https://i.imgur.com/xbeI2R0.png" />
 
-A site for people to share and search reviews and comments for their favourite drinks
+A site for people to share and search reviews and comments for their favourite drinks (https://bobadex.herokuapp.com/)
 
 ### To-Do List
 1) Deploy this (keeps failing for some reason)
