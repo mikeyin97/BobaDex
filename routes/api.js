@@ -31,7 +31,7 @@ router.get('/quicksearch', (req, res, next) => {
   let keywords;
   
   keywords = req.query.query.replace(' ', "|");
-  keywordsQuery = ".*" + keywords + ".*";
+  keywordsQuery = ".*(?i)" + keywords + ".*";
 
   query = {$or:
     [
@@ -58,19 +58,19 @@ router.get('/search', (req, res, next) => {
 
   if (req.query.name) {
     name = req.query.name;
-    nameQuery = ".*" + name.slice(1, -1) + ".*";
+    nameQuery = ".*(?i)" + name.slice(1, -1) + ".*";
     query["name"] = {$regex : nameQuery};
   }
 
   if (req.query.store) {
     store = req.query.store;
-    storeQuery = ".*" + store.slice(1, -1) + ".*";
+    storeQuery = ".*(?i)" + store.slice(1, -1) + ".*";
     query["store"] = {$regex : storeQuery};
   }
 
   if (req.query.location) {
     location = req.query.location;
-    locationQuery = ".*" + location.slice(1, -1) + ".*";
+    locationQuery = ".*(?i)" + location.slice(1, -1) + ".*";
     query["location"] = {$regex : locationQuery};
   }
 
