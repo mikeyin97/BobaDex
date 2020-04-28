@@ -1,6 +1,6 @@
 # BobaDex
 
-<img src="https://imgur.com/a/ZoLoaN2" />
+<img src="https://i.imgur.com/xbeI2R0.png" />
 
 A site for people to share and search reviews and comments for their favourite drinks
 
