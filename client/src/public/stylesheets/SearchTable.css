@@ -278,5 +278,9 @@ form.input input[type=text]{
     font-size: 10px;
     margin: 0px;
   }
+
+  td{
+    font-size: 10px;
+  }
   
 }
